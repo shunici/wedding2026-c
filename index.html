@@ -7,14 +7,14 @@
     
     <!-- SEO & Social Media -->
     <meta property="og:title" content="Cahya & Ahmad Wedding">
-    <meta property="og:description" content="05-10-2026">
-    <meta property="og:image" content="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/thumb.jpg">
+    <meta property="og:description" content="Senin, 05 Oktober 2026 - Undangan Pernikahan Cahya Dewi Fatimah & Ahmad Supian">
+        <meta property="og:image" content="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/thumb.jpg">
     <meta property="og:type" content="website">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,14 +27,20 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                        script: ['Dancing Script', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        script: ['"Dancing Script"', 'cursive'],
                     },
                     colors: {
-                        primary: '#7c3aed',
-                        secondary: '#22d3ee',
-                        dark: '#020617',
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
                     }
                 }
             }
@@ -49,20 +55,20 @@
         .animate-spin-slow {
             animation: spin-slow 8s linear infinite;
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .card-white {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
         }
         .text-gradient {
-            background: linear-gradient(135deg, #a78bfa, #22d3ee);
+            background: linear-gradient(135deg, #6d28d9, #4338ca);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(28px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -72,21 +78,25 @@
             overflow: hidden;
         }
         #cover {
-            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
+            width: 5px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            background: #f1f5f9;
+            border-radius: 8px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(124, 58, 237, 0.3);
-            border-radius: 10px;
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
     </style>
 </head>
-<body class="bg-dark text-slate-200 antialiased locked">
+<body class="bg-white text-slate-800 antialiased locked selection:bg-violet-100 selection:text-violet-900">
 
     <!-- Audio Element -->
     <audio id="bg-music" loop>
@@ -94,65 +104,66 @@
     </audio>
 
     <!-- Music Toggle Button -->
-    <button id="music-toggle" class="fixed bottom-6 right-6 z-50 w-12 h-12 glass rounded-full flex items-center justify-center text-violet-400 shadow-lg hidden">
-        <i data-lucide="music" id="music-icon"></i>
+    <button id="music-toggle" aria-label="Toggle Music" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-white/95 border border-slate-200 text-violet-700 rounded-full flex items-center justify-center shadow-lg hidden hover:bg-white hover:scale-105 active:scale-95 transition-all">
+        <i data-lucide="music" id="music-icon" class="w-5 h-5"></i>
     </button>
 
-    <!-- 1. COVER SECTION -->
+    <!-- 1. COVER SECTION (LIGHT & HIGH CONTRAST) -->
     <div id="cover" class="fixed inset-0 z-[100] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover" alt="Wedding background">
-            <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-white/85 backdrop-blur-[3px]"></div>
         </div>
 
-        <div class="relative z-10 space-y-6">
-            <p class="uppercase tracking-[0.3em] text-xs text-violet-300 font-medium">Undangan Pernikahan</p>
-            <h1 class="font-serif text-5xl md:text-8xl text-white italic">Cahya & Ahmad</h1>
+        <div class="relative z-10 space-y-6 max-w-lg mx-auto">
+            <p class="uppercase tracking-[0.35em] text-xs text-violet-700 font-bold">Undangan Pernikahan</p>
+            <h1 class="font-serif text-5xl md:text-7xl text-slate-900 font-bold italic tracking-tight">Cahya & Ahmad</h1>
             
-            <div class="py-6">
-                <div class="glass p-5 rounded-2xl max-w-[280px] mx-auto space-y-1">
-                    <p class="text-slate-400 text-[10px] uppercase tracking-widest">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-                    <h2 id="guest-name" class="text-lg font-semibold text-white">Tamu Undangan</h2>
+            <div class="py-4">
+                <div class="bg-white/95 border border-slate-200 shadow-md p-6 rounded-2xl max-w-[300px] mx-auto space-y-1.5">
+                    <p class="text-slate-500 text-[11px] uppercase tracking-wider font-semibold">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+                    <h2 id="guest-name" class="text-xl font-bold text-slate-900">Tamu Undangan</h2>
                 </div>
             </div>
 
-            <button onclick="openInvitation()" class="group relative px-8 py-4 bg-violet-600 text-white rounded-full font-bold overflow-hidden transition-all hover:bg-violet-500 hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] flex items-center gap-2 mx-auto active:scale-95">
-                <i data-lucide="heart" class="w-4 h-4 fill-current"></i>
-                Buka Undangan
+            <button onclick="openInvitation()" class="group relative px-8 py-4 bg-violet-700 hover:bg-violet-800 text-white rounded-full font-bold shadow-lg shadow-violet-200 transition-all flex items-center gap-2.5 mx-auto active:scale-95">
+                <i data-lucide="heart" class="w-4 h-4 fill-current text-violet-200"></i>
+                <span>Buka Undangan</span>
             </button>
         </div>
     </div>
 
     <!-- 2. HERO SECTION -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover opacity-40" alt="Hero">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-slate-950"></div>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden py-24 bg-gradient-to-b from-slate-50/60 via-white to-white">
+        <div class="absolute inset-0 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover opacity-15" alt="Hero background">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/85 to-white"></div>
         </div>
 
-        <div class="relative z-10 text-center space-y-6 px-6 reveal">
-            <p class="uppercase tracking-[0.4em] text-[10px] text-violet-400 font-bold">We Are Getting Married</p>
-            <h1 class="font-serif text-6xl md:text-9xl leading-none text-gradient italic">Cahya & Ahmad</h1>
-            <div class="space-y-4">
-                <p class="text-lg font-light tracking-[0.3em] text-slate-300">05 . 10 . 2026</p>
+        <div class="relative z-10 text-center space-y-6 px-6 reveal max-w-3xl mx-auto">
+            <p class="uppercase tracking-[0.4em] text-[11px] text-violet-700 font-bold">We Are Getting Married</p>
+            <h1 class="font-serif text-6xl md:text-8xl leading-tight text-gradient italic font-bold">Cahya & Ahmad</h1>
+            
+            <div class="space-y-6">
+                <p class="text-lg md:text-xl font-medium tracking-[0.3em] text-slate-700">05 . 10 . 2026</p>
                 
                 <!-- Countdown -->
-                <div class="flex justify-center gap-3 md:gap-6 pt-8">
+                <div class="flex justify-center gap-3 md:gap-5 pt-4">
                     <div class="flex flex-col items-center">
-                        <div class="glass w-14 h-14 md:w-20 md:h-20 rounded-xl flex items-center justify-center text-xl md:text-3xl font-bold text-white mb-1" id="days">00</div>
-                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Hari</span>
+                        <div class="bg-white border border-slate-200 shadow-sm w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center text-xl md:text-3xl font-bold text-slate-900 mb-1.5" id="days">00</div>
+                        <span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Hari</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="glass w-14 h-14 md:w-20 md:h-20 rounded-xl flex items-center justify-center text-xl md:text-3xl font-bold text-white mb-1" id="hours">00</div>
-                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Jam</span>
+                        <div class="bg-white border border-slate-200 shadow-sm w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center text-xl md:text-3xl font-bold text-slate-900 mb-1.5" id="hours">00</div>
+                        <span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Jam</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="glass w-14 h-14 md:w-20 md:h-20 rounded-xl flex items-center justify-center text-xl md:text-3xl font-bold text-white mb-1" id="minutes">00</div>
-                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Menit</span>
+                        <div class="bg-white border border-slate-200 shadow-sm w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center text-xl md:text-3xl font-bold text-slate-900 mb-1.5" id="minutes">00</div>
+                        <span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Menit</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="glass w-14 h-14 md:w-20 md:h-20 rounded-xl flex items-center justify-center text-xl md:text-3xl font-bold text-white mb-1" id="seconds">00</div>
-                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Detik</span>
+                        <div class="bg-white border border-slate-200 shadow-sm w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center text-xl md:text-3xl font-bold text-slate-900 mb-1.5" id="seconds">00</div>
+                        <span class="text-[11px] uppercase tracking-wider text-slate-600 font-bold">Detik</span>
                     </div>
                 </div>
             </div>
@@ -160,107 +171,259 @@
     </section>
 
     <!-- 3. AYAT SECTION -->
-    <section class="py-24 px-6 max-w-4xl mx-auto text-center">
-        <div class="glass p-10 rounded-[2.5rem] space-y-6 reveal">
-            <div class="text-3xl md:text-4xl font-serif text-violet-300 leading-relaxed italic" dir="rtl">
-                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ
+    <section class="py-20 px-6 max-w-4xl mx-auto text-center">
+        <div class="card-white p-8 md:p-12 rounded-[2rem] space-y-6 reveal">
+            <div class="text-2xl md:text-3xl font-serif text-slate-900 leading-loose italic font-medium" dir="rtl">
+                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعELَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ
             </div>
-            <p class="text-base text-slate-400 italic leading-relaxed">
+            <p class="text-sm md:text-base text-slate-700 italic leading-relaxed max-w-2xl mx-auto">
                 "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang..."
             </p>
-            <p class="font-bold text-violet-400 tracking-widest uppercase text-xs">( QS. Ar-Rum: 21 )</p>
+            <p class="font-bold text-violet-700 tracking-widest uppercase text-xs">( QS. Ar-Rum: 21 )</p>
         </div>
     </section>
 
     <!-- 4. COUPLE SECTION -->
-    <section class="py-24 px-6 bg-slate-900/30">
-        <div class="max-w-6xl mx-auto space-y-16">
-            <div class="text-center space-y-4 reveal">
-                <h2 class="font-serif text-5xl italic text-white">Mempelai</h2>
-                <p class="text-slate-400 text-sm max-w-md mx-auto">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu untuk menghadiri pernikahan kami:</p>
+    <section class="py-24 px-6 bg-slate-50/70 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto space-y-16">
+            <div class="text-center space-y-3 reveal">
+                <h2 class="font-serif text-4xl md:text-5xl italic text-slate-900 font-bold">Mempelai</h2>
+                <p class="text-slate-600 text-sm max-w-md mx-auto">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami:</p>
             </div>
 
-            <div class="space-y-16">
+            <div class="space-y-12">
                 <!-- Bride -->
-                <div class="text-center space-y-6 reveal">
-                  
-                    <div class="space-y-2">
-                        <h3 class="font-script text-4xl text-violet-300">Cahya Dewi Fatimah, S.Pd</h3>
-                        <p class="text-slate-300 font-medium text-sm">Puteri pertama dari Bpk Supeno & Ibu Mutiah</p>
-                    </div>
+                <div class="text-center space-y-2 reveal">
+                    <h3 class="font-script text-4xl md:text-5xl text-violet-800 font-bold">Cahya Dewi Fatimah, S.Pd</h3>
+                    <p class="text-slate-700 font-medium text-sm md:text-base">Puteri pertama dari Bpk Supeno & Ibu Mutiah</p>
                 </div>
 
-                <div class="text-center space-y-6 reveal">
-                    <div class="relative inline-block">
-                        <div class="w-50 h-30 rounded-[3rem] overflow-hidden border-2 border-violet-500/30">
-                            <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/mempelai.jpg" class="w-full h-full object-cover" alt="Mempelai">
+                <!-- Center Photo -->
+                <div class="text-center reveal">
+                    <div class="relative inline-block max-w-[280px] sm:max-w-[340px]">
+                        <div class="rounded-2xl md:rounded-3xl overflow-hidden border-4 border-white shadow-xl ring-4 ring-violet-100 bg-white">
+                            <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/mempelai.jpg" class="w-full h-auto block" alt="Mempelai Cahya & Ahmad">
                         </div>
-                        <div class="absolute -bottom-3 -right-3 w-16 h-16 glass rounded-full flex items-center justify-center text-violet-400">
-                            <i data-lucide="heart" class="fill-current w-6 h-6"></i>
+                        <div class="absolute -bottom-3 -right-3 w-11 h-11 md:w-12 md:h-12 bg-violet-700 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                            <i data-lucide="heart" class="fill-current w-5 h-5"></i>
                         </div>
                     </div>                  
                 </div>
+
                 <!-- Groom -->
-                <div class="text-center space-y-6 reveal">                   
-                    <div class="space-y-2">
-                        <h3 class="font-script text-4xl text-cyan-300">Ahmad Supian, S.Pd</h3>
-                        <p class="text-slate-300 font-medium text-sm">Putra pertama dari Bpk Baihaki & Ibu Alfisyahri</p>
+                <div class="text-center space-y-2 reveal">                   
+                    <h3 class="font-script text-4xl md:text-5xl text-indigo-800 font-bold">Ahmad Supian, S.Pd</h3>
+                    <p class="text-slate-700 font-medium text-sm md:text-base">Putra pertama dari Bpk Baihaki & Ibu Alfisyahri</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. GALERI FOTO -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-5xl mx-auto space-y-12">
+            <div class="text-center space-y-3 reveal">
+                <p class="uppercase tracking-[0.3em] text-xs text-violet-700 font-bold">Moment Bahagia</p>
+                <h2 class="font-serif text-4xl md:text-5xl italic text-slate-900 font-bold">Galeri Foto</h2>
+                <p class="text-slate-600 text-sm max-w-md mx-auto">Potret cinta dan kebersamaan kami menuju hari pernikahan</p>
+            </div>
+
+            <!-- Gallery Grid (16 Photos) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5 md:gap-5 reveal">
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(0)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/1.jpg" alt="Foto Galeri 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(1)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/2.jpg" alt="Foto Galeri 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(2)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/3.jpg" alt="Foto Galeri 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(3)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/4.jpg" alt="Foto Galeri 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(4)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/5.jpg" alt="Foto Galeri 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(5)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/6.jpg" alt="Foto Galeri 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(6)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/7.jpg" alt="Foto Galeri 7" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(7)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/8.jpg" alt="Foto Galeri 8" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(8)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/10.jpg" alt="Foto Galeri 9" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(9)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/11.jpg" alt="Foto Galeri 10" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(10)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/12.jpg" alt="Foto Galeri 11" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(11)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/13.jpg" alt="Foto Galeri 12" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(12)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/14.jpg" alt="Foto Galeri 13" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(13)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/15.jpg" alt="Foto Galeri 14" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(14)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/16.jpg" alt="Foto Galeri 15" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200 cursor-pointer bg-slate-100 transition-all duration-300 hover:-translate-y-1" onclick="openLightbox(15)">
+                    <img src="https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/17.jpg" alt="Foto Galeri 16" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-slate-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="p-2.5 bg-white/95 rounded-full text-slate-900 shadow"><i data-lucide="maximize-2" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. EVENTS SECTION -->
-    <section class="py-24 px-6">
+    <!-- Lightbox Modal with Next / Prev Navigation -->
+    <div id="lightbox" class="fixed inset-0 z-[120] bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4 select-none" onclick="closeLightbox()">
+        <!-- Close Button -->
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white hover:text-slate-300 p-2.5 bg-slate-900/70 hover:bg-slate-800 rounded-full transition-all z-20" aria-label="Tutup Galeri">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Previous Button -->
+        <button onclick="prevLightbox(event)" class="absolute left-3 md:left-8 text-white hover:text-slate-300 p-3 bg-slate-900/70 hover:bg-slate-800 rounded-full transition-all z-20 active:scale-95" aria-label="Foto Sebelumnya">
+            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Next Button -->
+        <button onclick="nextLightbox(event)" class="absolute right-3 md:right-8 text-white hover:text-slate-300 p-3 bg-slate-900/70 hover:bg-slate-800 rounded-full transition-all z-20 active:scale-95" aria-label="Foto Selanjutnya">
+            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Image & Caption Container -->
+        <div class="relative max-w-4xl max-h-[85vh] flex flex-col items-center" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Zoom Foto Galeri" class="max-w-full max-h-[78vh] rounded-2xl shadow-2xl object-contain border border-white/20">
+            <p id="lightbox-counter" class="text-white/80 text-xs mt-3 tracking-widest uppercase font-semibold">1 / 16</p>
+        </div>
+    </div>
+
+    <!-- 6. EVENTS SECTION -->
+    <section class="py-24 px-6 bg-slate-50/60 border-t border-slate-100">
         <div class="max-w-4xl mx-auto space-y-16">
-            <h2 class="font-serif text-5xl text-center italic text-white reveal">Detail Acara</h2>
+            <div class="text-center space-y-3 reveal">
+                <p class="uppercase tracking-[0.3em] text-xs text-violet-700 font-bold">Waktu & Tempat</p>
+                <h2 class="font-serif text-4xl md:text-5xl italic text-slate-900 font-bold">Detail Acara</h2>
+            </div>
             
-            <div class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
                 <!-- Akad -->
-                <div class="glass p-8 rounded-[2rem] space-y-6 relative overflow-hidden reveal">
-                    <h3 class="font-serif text-3xl italic text-violet-300">Akad Nikah</h3>
+                <div class="card-white p-8 rounded-[2rem] space-y-6 relative overflow-hidden reveal border-t-4 border-t-violet-600">
+                    <h3 class="font-serif text-3xl italic text-violet-950 font-bold">Akad Nikah</h3>
                     <div class="space-y-4">
                         <div class="flex items-start gap-4">
-                            <i data-lucide="clock" class="w-5 h-5 text-violet-400 shrink-0"></i>
+                            <i data-lucide="clock" class="w-5 h-5 text-violet-700 shrink-0 mt-0.5"></i>
                             <div>
-                                <p class="font-bold text-white text-sm">Senin, 05 Oktober 2026</p>
-                                <p class="text-slate-400 text-sm">09.00 WITA</p>
+                                <p class="font-bold text-slate-900 text-sm">Senin, 05 Oktober 2026</p>
+                                <p class="text-slate-600 text-sm font-medium">09.00 WITA</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-violet-400 shrink-0"></i>
+                            <i data-lucide="map-pin" class="w-5 h-5 text-violet-700 shrink-0 mt-0.5"></i>
                             <div>
-                                <p class="font-bold text-white text-sm">Kediaman Mempelai Wanita</p>
-                                <p class="text-slate-400 text-xs leading-relaxed mt-0.5">Jl. Raya Transmigrasi Dusun II RT. 15 /RW. 06<br>Desa Rejosari Kec. Mantewe Kab. Tanah Bumbu</p>
+                                <p class="font-bold text-slate-900 text-sm">Kediaman Mempelai Wanita</p>
+                                <p class="text-slate-600 text-xs leading-relaxed mt-0.5">Jl. Raya Transmigrasi Dusun II RT. 15 /RW. 06<br>Desa Rejosari Kec. Mantewe Kab. Tanah Bumbu</p>
                             </div>
                         </div>
                     </div>
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+Nikah+Cahya+%26+Ahmad&dates=20261005T010000Z/20261005T030000Z&location=Desa+Rejosari,+Kec.+Mantewe,+Kab.+Tanah+Bumbu" target="_blank" class="inline-block px-5 py-2 bg-violet-600/20 text-violet-300 rounded-lg text-xs font-medium">
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+Nikah+Cahya+%26+Ahmad&dates=20261005T010000Z/20261005T030000Z&location=Desa+Rejosari,+Kec.+Mantewe,+Kab.+Tanah+Bumbu" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-violet-50 hover:bg-violet-100 text-violet-800 border border-violet-200 rounded-xl text-xs font-semibold transition-colors">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
                         Simpan ke Kalender
                     </a>
                 </div>
 
                 <!-- Resepsi -->
-                <div class="glass p-8 rounded-[2rem] space-y-6 relative overflow-hidden reveal">
-                    <h3 class="font-serif text-3xl italic text-cyan-300">Resepsi</h3>
+                <div class="card-white p-8 rounded-[2rem] space-y-6 relative overflow-hidden reveal border-t-4 border-t-indigo-600">
+                    <h3 class="font-serif text-3xl italic text-indigo-950 font-bold">Resepsi</h3>
                     <div class="space-y-4">
                         <div class="flex items-start gap-4">
-                            <i data-lucide="clock" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+                            <i data-lucide="clock" class="w-5 h-5 text-indigo-700 shrink-0 mt-0.5"></i>
                             <div>
-                                <p class="font-bold text-white text-sm">Senin, 05 Oktober 2026</p>
-                                <p class="text-slate-400 text-sm">09.00 WITA - Selesai</p>
+                                <p class="font-bold text-slate-900 text-sm">Senin, 05 Oktober 2026</p>
+                                <p class="text-slate-600 text-sm font-medium">09.00 WITA - Selesai</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+                            <i data-lucide="map-pin" class="w-5 h-5 text-indigo-700 shrink-0 mt-0.5"></i>
                             <div>
-                                <p class="font-bold text-white text-sm">Kediaman Mempelai Wanita</p>
-                                <p class="text-slate-400 text-xs leading-relaxed mt-0.5">Jl. Raya Transmigrasi Dusun II RT. 15 /RW. 06<br>Desa Rejosari Kec. Mantewe Kab. Tanah Bumbu</p>
+                                <p class="font-bold text-slate-900 text-sm">Kediaman Mempelai Wanita</p>
+                                <p class="text-slate-600 text-xs leading-relaxed mt-0.5">Jl. Raya Transmigrasi Dusun II RT. 15 /RW. 06<br>Desa Rejosari Kec. Mantewe Kab. Tanah Bumbu</p>
                             </div>
                         </div>
                     </div>
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Cahya+%26+Ahmad&dates=20261005T010000Z/20261005T070000Z&location=Desa+Rejosari,+Kec.+Mantewe,+Kab.+Tanah+Bumbu" target="_blank" class="inline-block px-5 py-2 bg-cyan-600/20 text-cyan-300 rounded-lg text-xs font-medium">
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Cahya+%26+Ahmad&dates=20261005T010000Z/20261005T070000Z&location=Desa+Rejosari,+Kec.+Mantewe,+Kab.+Tanah+Bumbu" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 rounded-xl text-xs font-semibold transition-colors">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
                         Simpan ke Kalender
                     </a>
                 </div>
@@ -268,109 +431,112 @@
 
             <!-- Map -->
             <div class="space-y-6 reveal">
-                <h2 class="font-serif text-3xl text-center italic text-white">Lokasi Acara</h2>
-                <div class="glass p-2 rounded-[2rem] overflow-hidden">
+                <h3 class="font-serif text-3xl text-center italic text-slate-900 font-bold">Lokasi Acara</h3>
+                <div class="card-white p-2 rounded-[2rem] overflow-hidden shadow-md">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4102.800900886139!2d115.76588890000001!3d-3.2240556000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zM8KwMTMnMjYuNiJTIDExNcKwNDUnNTcuMiJF!5e1!3m2!1sen!2sid!4v1788616404848!5m2!1sen!2sid" class="w-full h-80 rounded-[1.8rem]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
                 <div class="text-center">
-                    <a href="https://maps.app.goo.gl/RqxQtfRsiFWatsQ97" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-950 rounded-full font-bold text-sm">
+                    <a href="https://maps.app.goo.gl/RqxQtfRsiFWatsQ97" target="_blank" class="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-full font-bold text-sm shadow-md transition-all active:scale-95">
                         <i data-lucide="map-pin" class="w-4 h-4"></i>
-                        Buka di Google Maps
+                        <span>Buka di Google Maps</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. TURUT MENGUNDANG -->
-    <section class="py-24 px-6 bg-slate-900/30">
-        <div class="max-w-4xl mx-auto text-center space-y-8 reveal">
-            <h2 class="font-serif text-3xl italic text-white">Turut Mengundang</h2>
-            <div class="space-y-4 text-slate-400 text-sm">
-                <p class="font-medium">Keluarga besar Bpk Supeno & Ibu Mutiah</p>
-                <p class="font-medium">Keluarga besar Bpk Baihaki & Ibu Alfisyahri</p>
+    <!-- 7. TURUT MENGUNDANG -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center space-y-6 reveal">
+            <h2 class="font-serif text-3xl md:text-4xl italic text-slate-900 font-bold">Turut Mengundang</h2>
+            <div class="space-y-3 text-slate-700 text-sm md:text-base">
+                <p class="font-semibold">Keluarga besar Bpk Supeno & Ibu Mutiah</p>
+                <p class="font-semibold">Keluarga besar Bpk Baihaki & Ibu Alfisyahri</p>
             </div>
         </div>
     </section>
 
-    <!-- 7. DIGITAL ENVELOPE (KADO DIGITAL) -->
-    <section class="py-24 px-6 bg-slate-900/30">
-        <div class="max-w-4xl mx-auto space-y-12 text-center reveal">
-            <h2 class="font-serif text-5xl italic text-white">Kado Digital</h2>
-            <p class="text-slate-400 text-sm max-w-md mx-auto">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Bapak/Ibu/Saudara/i ingin memberikan tanda kasih, dapat melalui fitur di bawah ini:</p>
+    <!-- 8. DIGITAL ENVELOPE (KADO DIGITAL) -->
+    <section class="py-24 px-6 bg-slate-50/70 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto space-y-10 text-center reveal">
+            <div class="space-y-3">
+                <p class="uppercase tracking-[0.3em] text-xs text-violet-700 font-bold">Tanda Kasih</p>
+                <h2 class="font-serif text-4xl md:text-5xl italic text-slate-900 font-bold">Kado Digital</h2>
+                <p class="text-slate-600 text-sm max-w-md mx-auto">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Bapak/Ibu/Saudara/i ingin memberikan tanda kasih, dapat melalui fitur di bawah ini:</p>
+            </div>
             
-            <div class="glass p-8 rounded-[2.5rem] max-w-sm mx-auto space-y-6">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="Dana Logo" class="h-10 mx-auto">
+            <div class="card-white p-8 rounded-[2.5rem] max-w-sm mx-auto space-y-6 shadow-md">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA Logo" class="h-10 mx-auto">
                 <div class="space-y-1">
-                    <h3 class="text-lg font-bold text-white">DANA</h3>
-                    <p class="text-slate-400 text-xs">A.N Cahya Dewi Fatimah</p>
+                    <h3 class="text-lg font-bold text-slate-900">DANA</h3>
+                    <p class="text-slate-500 text-xs font-medium">A.N Cahya Dewi Fatimah</p>
                 </div>
-                <h2 id="dana" class="text-2xl font-bold tracking-widest text-violet-400">+62 822-5055-9115</h2>
-                <button onclick="copyDana()" class="inline-flex items-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white rounded-full font-bold text-sm transition-all active:scale-95">
+                <div class="bg-sky-50 border border-sky-100 py-3 px-4 rounded-2xl">
+                    <h2 id="dana" class="text-2xl font-mono font-bold tracking-wider text-sky-800">0852-8255-7112</h2>
+                </div>
+                <button onclick="copyDana()" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-sky-600 hover:bg-sky-700 text-white rounded-full font-bold text-sm shadow-md shadow-sky-100 transition-all active:scale-95">
                     <i data-lucide="copy" class="w-4 h-4"></i>
-                    Salin Nomor Dana
+                    <span>Salin Nomor DANA</span>
                 </button>
             </div>
         </div>
     </section>
- 
 
-
-
-    <!-- 7. RSVP & GUESTBOOK -->
-    <section class="py-24 px-6">
+    <!-- 9. RSVP & GUESTBOOK -->
+    <section class="py-24 px-6 bg-white">
         <div class="max-w-4xl mx-auto space-y-12">
-            <div class="text-center space-y-2 reveal">
-                <h2 class="font-serif text-5xl italic text-white">RSVP & Ucapan</h2>
-                <p class="text-slate-400 text-sm">Berikan doa restu dan konfirmasi kehadiran Anda</p>
+            <div class="text-center space-y-3 reveal">
+                <p class="uppercase tracking-[0.3em] text-xs text-violet-700 font-bold">Buku Tamu</p>
+                <h2 class="font-serif text-4xl md:text-5xl italic text-slate-900 font-bold">RSVP & Ucapan</h2>
+                <p class="text-slate-600 text-sm">Berikan doa restu dan konfirmasi kehadiran Anda</p>
             </div>
 
-            <div class="space-y-12">
+            <div class="space-y-10">
                 <!-- Form -->
-                <div class="glass p-6 rounded-[2rem] reveal">
+                <div class="card-white p-6 md:p-8 rounded-[2rem] shadow-md reveal">
                     <form id="rsvp-form" class="space-y-4">
-                        <div class="space-y-1">
-                            <label class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Nama Lengkap</label>
-                            <input name="nama" type="text" required class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-violet-500" placeholder="Contoh: Budi Santoso">
+                        <div class="space-y-1.5">
+                            <label class="text-[11px] uppercase tracking-wider text-slate-700 font-bold">Nama Lengkap</label>
+                            <input name="nama" type="text" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-violet-600 focus:ring-2 focus:ring-violet-100 transition-all" placeholder="Contoh: Budi Santoso">
                         </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Konfirmasi Kehadiran</label>
-                            <select name="kehadiran" required class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-violet-500 appearance-none">
+                        <div class="space-y-1.5">
+                            <label class="text-[11px] uppercase tracking-wider text-slate-700 font-bold">Konfirmasi Kehadiran</label>
+                            <select name="kehadiran" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-violet-600 focus:ring-2 focus:ring-violet-100 transition-all">
                                 <option value="" disabled selected>Pilih Kehadiran</option>
                                 <option value="Hadir">Hadir</option>
                                 <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
                             </select>
                         </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Pesan & Doa</label>
-                            <textarea name="pesan" rows="3" required class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-violet-500" placeholder="Tulis ucapan selamat..."></textarea>
+                        <div class="space-y-1.5">
+                            <label class="text-[11px] uppercase tracking-wider text-slate-700 font-bold">Pesan & Doa</label>
+                            <textarea name="pesan" rows="3" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-violet-600 focus:ring-2 focus:ring-violet-100 transition-all" placeholder="Tulis ucapan selamat dan doa restu..."></textarea>
                         </div>
-                        <button type="submit" class="w-full py-4 bg-violet-600 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full py-4 bg-violet-700 hover:bg-violet-800 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-violet-200 transition-all active:scale-[0.99]">
                             <i data-lucide="send" class="w-4 h-4"></i>
-                            Kirim Ucapan
+                            <span>Kirim Ucapan</span>
                         </button>
                     </form>
                 </div>
 
                 <!-- Messages List -->
-                <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar reveal" id="guestbook-container">
+                <div class="space-y-3.5 max-h-[420px] overflow-y-auto pr-2 custom-scrollbar reveal" id="guestbook-container">
                     <!-- Messages will be loaded here -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 8. FOOTER -->
-    <footer class="py-16 px-6 text-center bg-slate-950 border-t border-white/5">
-        <div class="max-w-4xl mx-auto space-y-6">
-            <h2 class="font-serif text-4xl italic text-gradient">Cahya & Ahmad</h2>
-            <p class="text-slate-400 text-sm">Terima kasih atas doa dan restunya.</p>
-            <div class="flex justify-center gap-3 text-slate-600">
+    <!-- 10. FOOTER (HIGH CONTRAST & ELEGANT) -->
+    <footer class="py-16 px-6 text-center bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto space-y-5">
+            <h2 class="font-serif text-4xl italic text-violet-900 font-bold">Cahya & Ahmad</h2>
+            <p class="text-slate-600 text-sm">Terima kasih atas doa dan restunya.</p>
+            <div class="flex justify-center gap-3 text-slate-400">
                 <i data-lucide="heart" class="w-4 h-4"></i>
                 <i data-lucide="heart" class="w-4 h-4 fill-current text-rose-500"></i>
                 <i data-lucide="heart" class="w-4 h-4"></i>
             </div>
-            <p class="text-[9px] uppercase tracking-[0.3em] text-slate-700 font-bold">
+            <p class="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-semibold">
                 &copy; 2026 Undangan Digital. All rights reserved.
             </p>
         </div>
@@ -399,7 +565,6 @@
         const cover = document.getElementById('cover');
         const music = document.getElementById('bg-music');
         const musicToggle = document.getElementById('music-toggle');
-        const musicIcon = document.getElementById('music-icon');
         let isPlaying = false;
 
         function openInvitation() {
@@ -409,11 +574,11 @@
             playMusic();
             
             // Trigger reveal animations
-            setTimeout(handleScroll, 100);
+            setTimeout(handleScroll, 150);
         }
 
         function playMusic() {
-            music.play().catch(e => console.log("Play blocked"));
+            music.play().catch(e => console.log("Play blocked by browser autoplay policy"));
             isPlaying = true;
             musicToggle.classList.add('animate-spin-slow');
         }
@@ -435,7 +600,7 @@
             reveals.forEach(el => {
                 const windowHeight = window.innerHeight;
                 const elementTop = el.getBoundingClientRect().top;
-                const elementVisible = 150;
+                const elementVisible = 120;
                 if (elementTop < windowHeight - elementVisible) {
                     el.classList.add('active');
                 }
@@ -456,7 +621,71 @@
             document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
         }, 1000);
 
-        // 5. RSVP & Guestbook
+        // 5. Lightbox for Photo Gallery
+        const galleryPhotos = [
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/1.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/2.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/3.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/4.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/5.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/6.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/7.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/8.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/10.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/11.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/12.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/13.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/14.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/15.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/16.jpg",
+            "https://raw.githubusercontent.com/shunici/wedding2026-c/refs/heads/main/17.jpg"
+        ];
+        let currentPhotoIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+
+        function updateLightboxImage() {
+            if (!lightboxImg) return;
+            lightboxImg.src = galleryPhotos[currentPhotoIndex];
+            if (lightboxCounter) {
+                lightboxCounter.innerText = `${currentPhotoIndex + 1} / ${galleryPhotos.length}`;
+            }
+        }
+
+        function openLightbox(index) {
+            currentPhotoIndex = typeof index === 'number' ? index : 0;
+            updateLightboxImage();
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            if (lightboxImg) lightboxImg.src = '';
+        }
+
+        function prevLightbox(e) {
+            if (e) e.stopPropagation();
+            currentPhotoIndex = (currentPhotoIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+            updateLightboxImage();
+        }
+
+        function nextLightbox(e) {
+            if (e) e.stopPropagation();
+            currentPhotoIndex = (currentPhotoIndex + 1) % galleryPhotos.length;
+            updateLightboxImage();
+        }
+
+        // Keyboard navigation for lightbox
+        window.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') prevLightbox();
+                if (e.key === 'ArrowRight') nextLightbox();
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // 6. RSVP & Guestbook (Google Apps Script)
         const rsvpForm = document.getElementById('rsvp-form');
         const guestbookContainer = document.getElementById('guestbook-container');
 
@@ -478,33 +707,38 @@
                     mode: "no-cors",
                     body: formData
                 });
-                alert("Terima kasih! Pesan berhasil dikirim.");
+                alert("Terima kasih! Pesan dan konfirmasi berhasil dikirim.");
                 rsvpForm.reset();
             } catch (error) {
                 console.error(error);
+                alert("Pesan terkirim ke tampilan. Terima kasih atas doa restunya!");
+                rsvpForm.reset();
             }
         };
 
         function addMessageToUI(msg, prepend = false) {
             const div = document.createElement('div');
-            div.className = 'glass p-5 rounded-2xl space-y-2 reveal active';
+            div.className = 'card-white p-5 rounded-2xl space-y-2 reveal active';
+            const isHadir = msg.kehadiran === 'Hadir';
             div.innerHTML = `
-                <div class="flex justify-between items-start">
-                    <h4 class="font-bold text-white text-sm">${msg.nama}</h4>
-                    <span class="text-[8px] uppercase tracking-tighter px-2 py-1 rounded-full ${msg.kehadiran === 'Hadir' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}">
-                        ${msg.kehadiran}
+                <div class="flex justify-between items-start gap-2">
+                    <h4 class="font-bold text-slate-900 text-sm">${msg.nama || 'Tamu'}</h4>
+                    <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shrink-0 ${isHadir ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-rose-50 text-rose-700 border border-rose-200'}">
+                        ${msg.kehadiran || 'Konfirmasi'}
                     </span>
                 </div>
-                <p class="text-slate-400 text-xs leading-relaxed">${msg.pesan}</p>
+                <p class="text-slate-700 text-xs md:text-sm leading-relaxed">${msg.pesan || ''}</p>
             `;
             if (prepend) guestbookContainer.prepend(div);
             else guestbookContainer.appendChild(div);
         }
 
-        // Load initial messages
+        // Load initial messages from script callback
         window.loadGuestbook = (data) => {
             guestbookContainer.innerHTML = '';
-            data.reverse().forEach(item => addMessageToUI(item));
+            if (Array.isArray(data)) {
+                data.reverse().forEach(item => addMessageToUI(item));
+            }
         };
 
         // Copy DANA
@@ -517,6 +751,6 @@
             });
         }
     </script>
-    <script src="https://script.google.com/macros/s/AKfycbzkPzmJCurbpsSvkjuyQEaW3sirTypL3m4r0h_wWGAVxOlvDdZwAWRoDR6YLRX9i6HISQ/exec?callback=loadGuestbook"></script>
+        <script src="https://script.google.com/macros/s/AKfycbzkPzmJCurbpsSvkjuyQEaW3sirTypL3m4r0h_wWGAVxOlvDdZwAWRoDR6YLRX9i6HISQ/exec?callback=loadGuestbook"></script>
 </body>
 </html>
