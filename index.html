@@ -502,19 +502,51 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // 1. Guest Name from URL or Path
+        // 1. Guest Name from URL, Path, or Hash
+        function formatName(raw) {
+            if (!raw) return '';
+            try {
+                raw = decodeURIComponent(raw.replace(/\+/g, ' '));
+            } catch (e) {}
+            return raw
+                .replace(/[-_]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/\b\w/g, c => c.toUpperCase());
+        }
+
         function getGuestName() {
+            // Check query parameter (?to=..., ?nama=..., ?u=...)
             const urlParams = new URLSearchParams(window.location.search);
             const to = urlParams.get('to') || urlParams.get('nama') || urlParams.get('u');
-            if (to && to.trim() !== '') return decodeURIComponent(to);
-            let path = window.location.pathname.substring(1);
-            if (path && path.trim() !== '' && !path.includes('.')) {
-                return decodeURIComponent(path).replace(/[-_]/g, ' ').replace(/\s+/g, ' ').trim().replace(/\b\w/g, c => c.toUpperCase());
+            if (to && to.trim() !== '') return formatName(to);
+
+            // Check URL hash (#...)
+            let hash = window.location.hash ? window.location.hash.substring(1) : '';
+            if (hash && hash.trim() !== '' && !hash.includes('/')) {
+                return formatName(hash);
             }
+
+            // Check URL path (domain.com/shuni & istri)
+            let path = window.location.pathname.substring(1);
+            // Remove trailing slash
+            path = path.replace(/\/+$/, '');
+            if (path && path.trim() !== '' && !path.includes('.')) {
+                return formatName(path);
+            }
+
             return 'Tamu Undangan';
         }
+
+        const guestName = getGuestName();
         const guestNameEl = document.getElementById('guest-name');
-        if (guestNameEl) guestNameEl.innerText = getGuestName();
+        if (guestNameEl) guestNameEl.innerText = guestName;
+
+        // Auto-fill RSVP name input if guest name is specific
+        if (guestName && guestName !== 'Tamu Undangan') {
+            const namaInput = document.querySelector('input[name="nama"]');
+            if (namaInput) namaInput.value = guestName;
+        }
 
         // 2. Open Invitation
         const cover = document.getElementById('cover');
