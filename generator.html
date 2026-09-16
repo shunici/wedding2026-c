@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Link Undangan Pernikahan - Cahya & Ahmad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px 16px;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 620px;
+            padding: 32px 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 13.5px;
+            color: #334155;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s;
+            color: #0f172a;
+            background: #ffffff;
+        }
+
+        input[type="text"]:focus {
+            border-color: #6d28d9;
+            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12);
+        }
+
+        .link-preview {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .link-preview a {
+            color: #6d28d9;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link-preview a:hover {
+            text-decoration: underline;
+        }
+
+        .output-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            white-space: pre-line;
+            font-size: 13.5px;
+            line-height: 1.65;
+            color: #334155;
+            max-height: 280px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 13px 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-copy {
+            background-color: #0f172a;
+            color: #ffffff;
+        }
+
+        .btn-copy:hover {
+            background-color: #1e293b;
+        }
+
+        .btn-wa {
+            background-color: #16a34a;
+            color: #ffffff;
+        }
+
+        .btn-wa:hover {
+            background-color: #15803d;
+        }
+
+        .toast {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 13.5px;
+            color: #16a34a;
+            font-weight: 600;
+            display: none;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 12px;
+            color: #94a3b8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Generator Pesan Undangan</h2>
+        <p>Cahya Dewi Fatimah & Ahmad Supian</p>
+    </div>
+
+    <div class="form-group">
+        <label for="namaInput">Nama Tamu Undangan:</label>
+        <input type="text" id="namaInput" placeholder="Contoh: Shuni & Istri" oninput="generateText()" autofocus>
+    </div>
+
+    <div class="link-preview">
+        <span style="color: #64748b; font-size: 12px; margin-right: 8px;">Link:</span>
+        <a id="linkPreviewHref" href="#" target="_blank" rel="noopener noreferrer">https://wedding2026-c.vercel.app/</a>
+    </div>
+
+    <label>Pratinjau Teks Undangan:</label>
+    <div class="output-box" id="outputTeks">
+        <!-- Hasil teks undangan akan muncul di sini -->
+    </div>
+
+    <div class="button-group">
+        <button class="btn btn-copy" onclick="copyToClipboard()">
+            📋 Salin Pesan
+        </button>
+        <a class="btn btn-wa" id="btnWa" href="#" target="_blank" rel="noopener noreferrer">
+            💬 Buka WhatsApp
+        </a>
+    </div>
+
+    <div class="toast" id="toastMessage">✓ Pesan dan link berhasil disalin!</div>
+
+    <div class="note">
+        💡 Halaman ini khusus untuk pembuat undangan, tidak akan mengganggu tampilan tamu undangan.
+    </div>
+</div>
+
+<script>
+    // Gunakan domain Vercel Anda secara otomatis, atau sesuaikan jika menggunakan domain sendiri
+    const domainBase = (window.location.hostname && !window.location.hostname.includes('run.app') && !window.location.hostname.includes('localhost'))
+        ? (window.location.origin + "/")
+        : "https://wedding2026-c.vercel.app/";
+
+    function getFormattedLink(input) {
+        if (!input || !input.trim()) return domainBase;
+        
+        // Format link: mengubah spasi menjadi tanda hubung (-) atau encode URI
+        const clean = input.trim().replace(/\s+/g, '-');
+        return domainBase + encodeURIComponent(clean).replace(/%2D/g, '-');
+    }
+
+    function generateText() {
+        const inputNama = document.getElementById('namaInput').value.trim();
+        const generatedLink = getFormattedLink(inputNama);
+
+        // Update preview link href
+        const linkPreviewHref = document.getElementById('linkPreviewHref');
+        linkPreviewHref.textContent = generatedLink;
+        linkPreviewHref.href = generatedLink;
+
+        const template = `Assalamu'alaikum Wr. Wb.
+${inputNama ? `Kepada Yth. Bapak/Ibu/Saudara/i: *${inputNama}*\n` : ''}
+Izinkan kami mengundang Bapak/Ibu/Saudara/i untuk hadir memberikan do'a restu pada acara pernikahan kami:
+
+*Cahya Dewi Fatimah & Ahmad Supian*
+
+Acara Resepsi:
+📅 Hari, Tgl : Senin, 05 Oktober 2026
+⏰ Waktu     : 09.00 s/d Selesai
+📍 Tempat    : Kediaman Mempelai Wanita
+Jl. Raya Transmigrasi Dusun II RT. 15 / RW. 06
+Desa Rejosari Kec. Mantewe Kab. Tanah Bumbu
+
+Untuk detail acara, peta lokasi, dan ucapan bisa klik tautan di bawah ini:
+${generatedLink}
+
+Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan do'a restu.
+
+Wassalamu'alaikum Wr. Wb.`;
+
+        document.getElementById('outputTeks').textContent = template;
+
+        // Update link WhatsApp
+        const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(template)}`;
+        document.getElementById('btnWa').href = waUrl;
+    }
+
+    function copyToClipboard() {
+        const teksFormat = document.getElementById('outputTeks').textContent;
+        
+        const showSuccess = () => {
+            const toast = document.getElementById('toastMessage');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2500);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(teksFormat).then(showSuccess).catch(() => {
+                fallbackCopy(teksFormat, showSuccess);
+            });
+        } else {
+            fallbackCopy(teksFormat, showSuccess);
+        }
+    }
+
+    function fallbackCopy(text, callback) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            if (callback) callback();
+        } catch (err) {
+            prompt("Silakan salin teks berikut:", text);
+        }
+        document.body.removeChild(textArea);
+    }
+
+    // Jalankan pertama kali saat halaman dimuat
+    generateText();
+</script>
+
+</body>
+</html>
