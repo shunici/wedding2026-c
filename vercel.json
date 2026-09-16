@@ -1,7 +1,12 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/generator",
+      "destination": "/generator.html"
+    },
+    {
+      "source": "/((?!generator).*)",
       "destination": "/index.html"
     }
   ]
