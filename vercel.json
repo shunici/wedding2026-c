@@ -6,7 +6,7 @@
       "destination": "/generator.html"
     },
     {
-      "source": "/((?!generator).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
