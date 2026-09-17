@@ -230,10 +230,7 @@
 
     function getFormattedLink(input) {
         if (!input || !input.trim()) return domainBase;
-        
-        // Format link: mengubah spasi menjadi tanda hubung (-) atau encode URI
-        const clean = input.trim().replace(/\s+/g, '-');
-        return domainBase + encodeURIComponent(clean).replace(/%2D/g, '-');
+        return domainBase + '?to=' + encodeURIComponent(input.trim());
     }
 
     function generateText() {
